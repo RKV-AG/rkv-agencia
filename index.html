@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RKV Agência — Marketing Digital que Performa. Tráfego pago, automação e estratégia orientada a dados em Curitiba, PR.">
+<meta name="keywords" content="agência marketing digital, tráfego pago, Google Ads, Meta Ads, automação, Curitiba">
+<meta property="og:title" content="RKV Agência — Marketing Digital que Performa">
+<meta property="og:description" content="Transformamos seu investimento em marketing digital em resultados reais.">
+<meta property="og:type" content="website">
+<title>RKV Agência — Marketing Digital que Performa</title>
+
+<!-- ============================================================
+     ✏️  GUIA DE EDIÇÃO RÁPIDA
+     ============================================================
+     Para editar textos: procure os comentários "EDITAR:" abaixo.
+     Para mudar cores: edite as variáveis CSS em :root (linha ~60).
+     Para mudar links do WhatsApp: procure "wa.me/5541995110264".
+     Para mudar e-mail: procure "rvk.agencia@gmail.com".
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   CSS VARIABLES — edite aqui para mudar a paleta de cores
+   ============================================================ */
+:root {
+  --bg:        #090909;       /* fundo principal */
+  --surface:   #111111;       /* superfície de cards */
+  --surface2:  #181818;       /* superfície secundária */
+  --accent:    #E8220A;       /* vermelho — cor principal de destaque */
+  --accent2:   #FF5C1A;       /* laranja — cor secundária de destaque */
+  --text:      #F0EDE6;       /* texto principal */
+  --muted:     #888888;       /* texto secundário */
+  --border:    rgba(255,255,255,0.07); /* bordas suaves */
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.35;
+}
+
+/* ── CURSOR ── */
+.cursor {
+  width: 12px; height: 12px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(232,34,10,0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(9,9,9,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s;
+}
+nav.scrolled { padding: 16px 60px; }
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--text);
+}
+.logo span { color: var(--accent); }
+
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* ── EDITAR: link do WhatsApp no botão do nav ── */
+.nav-cta {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 140px 60px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+.hero-glow {
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(232,34,10,0.1) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232,34,10,0.1);
+  border: 1px solid rgba(232,34,10,0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  border-radius: 50%;
+  animation: blink 1.5s ease infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.hero h1 .highlight {
+  color: var(--accent);
+  display: inline-block;
+}
+.hero h1 .stroke {
+  -webkit-text-stroke: 2px var(--text);
+  color: transparent;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 48px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  animation: fadeUp 0.8s 0.3s ease both;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #fff;
+  padding: 16px 36px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 2px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+.btn-primary svg { transition: transform 0.3s; }
+.btn-primary:hover svg { transform: translateX(4px); }
+
+.btn-ghost {
+  color: var(--text);
+  padding: 16px 36px;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-ghost:hover { border-color: var(--text); }
+
+.hero-stats {
+  position: absolute;
+  right: 60px;
+  bottom: 80px;
+  display: flex;
+  gap: 40px;
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+.stat { text-align: right; }
+.stat-number {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+}
+.stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  background: var(--surface);
+}
+.marquee-track {
+  display: flex;
+  gap: 60px;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+.marquee-item {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+}
+.marquee-item span { color: var(--accent); font-size: 1.2rem; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTIONS SHARED ── */
+section { padding: 120px 60px; }
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  width: 30px; height: 1px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+/* ── SERVICES ── */
+.services { background: var(--surface); }
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 80px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.service-card {
+  background: var(--bg);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+  border: 1px solid transparent;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(232,34,10,0.05) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.service-card:hover { border-color: rgba(232,34,10,0.2); transform: translateY(-4px); }
+.service-card:hover::before { opacity: 1; }
+
+.service-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+}
+
+.service-icon {
+  width: 48px; height: 48px;
+  margin-bottom: 24px;
+  color: var(--accent);
+}
+
+.service-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--muted);
+  transition: border-color 0.3s, color 0.3s;
+}
+.service-card:hover .tag { border-color: rgba(232,34,10,0.3); color: var(--accent); }
+
+/* ── WHY / SOBRE ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.why-visual {
+  position: relative;
+  height: 500px;
+}
+
+.why-card-big {
+  position: absolute;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px;
+  border-radius: 4px;
+  width: 75%;
+}
+.why-card-big.top { top: 0; right: 0; }
+.why-card-big.bottom {
+  bottom: 0; left: 0;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #fff;
+  border: none;
+}
+
+.why-card-big .metric {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.why-card-big.top .metric { color: var(--accent); }
+.why-card-big.bottom .metric { color: #fff; }
+
+.why-card-big .metric-label { font-size: 0.85rem; opacity: 0.7; }
+
+.why-list { list-style: none; margin-top: 48px; }
+.why-list li {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+.why-list li:hover { color: var(--text); }
+.why-list li::before {
+  content: '→';
+  color: var(--accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── RESULTS ── */
+.results { background: var(--surface); }
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 80px;
+}
+
+.result-item {
+  background: var(--bg);
+  padding: 48px 40px;
+  border-top: 3px solid transparent;
+  transition: border-color 0.3s;
+}
+.result-item:hover { border-color: var(--accent); }
+
+.result-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.result-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 80px;
+}
+
+.testimonial {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px;
+  border-radius: 4px;
+  position: relative;
+  transition: border-color 0.3s;
+}
+.testimonial:hover { border-color: rgba(232,34,10,0.3); }
+.testimonial::before {
+  content: '"';
+  font-family: 'Syne', sans-serif;
+  font-size: 5rem;
+  color: var(--accent);
+  opacity: 0.3;
+  position: absolute;
+  top: 16px; left: 32px;
+  line-height: 1;
+}
+.testimonial p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 32px;
+  padding-top: 24px;
+}
+.testimonial-author { display: flex; align-items: center; gap: 14px; }
+.avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--accent);
+  border: 2px solid rgba(232,34,10,0.2);
+  flex-shrink: 0;
+}
+.author-name { font-size: 0.9rem; font-weight: 500; }
+.author-role { font-size: 0.75rem; color: var(--muted); }
+
+/* ── PROCESS ── */
+.process { background: var(--surface); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 80px;
+}
+
+.step {
+  background: var(--bg);
+  padding: 48px 32px;
+  position: relative;
+  transition: background 0.3s;
+}
+.step:hover { background: #141414; }
+
+.step-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  color: rgba(232,34,10,0.1);
+  line-height: 1;
+  margin-bottom: 32px;
+  transition: color 0.3s;
+}
+.step:hover .step-num { color: rgba(232,34,10,0.2); }
+
+.step h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+/* ── CTA BAND ── */
+.cta-section {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #000;
+  text-align: center;
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: 'RKV';
+  position: absolute;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 30vw;
+  color: rgba(0,0,0,0.05);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.cta-section .section-label { color: rgba(0,0,0,0.5); justify-content: center; }
+.cta-section .section-label::before { background: rgba(0,0,0,0.3); }
+.cta-section .section-title { color: #000; max-width: 600px; margin: 0 auto 16px; }
+.cta-section .section-sub { color: rgba(0,0,0,0.6); max-width: 460px; margin: 0 auto 48px; }
+
+.btn-dark {
+  background: #000;
+  color: var(--accent);
+  padding: 18px 48px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 2px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s;
+}
+.btn-dark:hover { background: #111; transform: translateY(-3px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 80px;
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 32px; }
+
+.contact-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: border-color 0.3s;
+  text-decoration: none;
+  color: inherit;
+}
+.contact-item:hover { border-color: rgba(232,34,10,0.3); }
+
+.contact-icon {
+  width: 44px; height: 44px;
+  background: rgba(232,34,10,0.1);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.contact-item-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+.contact-item-value { font-size: 1rem; font-weight: 400; }
+
+/* Form */
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+
+label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+input, textarea, select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 18px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+  outline: none;
+  width: 100%;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+textarea { resize: vertical; min-height: 120px; }
+::placeholder { color: #444; }
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #fff;
+  border: none;
+  padding: 16px 40px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  font-family: 'DM Sans', sans-serif;
+}
+.submit-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--surface);
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 24px;
+}
+footer .logo { font-size: 1.2rem; }
+footer p { font-size: 0.8rem; color: var(--muted); }
+.footer-links { display: flex; gap: 32px; }
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--accent); }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(9,9,9,0.98);
+  z-index: 400;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--accent); }
+.mobile-close {
+  position: absolute;
+  top: 28px; right: 28px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero-stats { position: static; flex-direction: row; margin-top: 60px; }
+  .stat { text-align: left; }
+}
+
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 80px 24px; }
+  .hero { padding: 120px 24px 80px; }
+  .hero-stats { flex-direction: row; flex-wrap: wrap; gap: 24px; }
+  .services-grid,
+  .results-grid,
+  .testimonials-grid,
+  .process-steps { grid-template-columns: 1fr; }
+  .why-grid,
+  .contact-grid { grid-template-columns: 1fr; }
+  .why-visual { height: 300px; }
+  footer { flex-direction: column; text-align: center; padding: 40px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .cta-section { padding: 80px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <a href="#servicos" onclick="closeMobile()">Serviços</a>
+  <a href="#sobre" onclick="closeMobile()">Por que a RKV</a>
+  <a href="#resultados" onclick="closeMobile()">Resultados</a>
+  <a href="#processo" onclick="closeMobile()">Processo</a>
+  <a href="#contato" onclick="closeMobile()">Contato</a>
+  <!-- EDITAR: link WhatsApp mobile -->
+  <a href="https://w.app/oinckg?text=Olá%2C%20vim%20pelo%20site%20da%20RKV!" target="_blank" style="color:var(--accent)">Falar agora →</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <!-- EDITAR: nome da agência no logo -->
+  <a href="#" class="logo">RK<span>V</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#sobre">Por que a RKV</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <!-- EDITAR: link do WhatsApp -->
+  <a href="https://w.app/oinckg?text=Olá%2C%20vim%20pelo%20site%20da%20RKV!" class="nav-cta" target="_blank">Falar agora →</a>
+  <div class="hamburger" onclick="openMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <!-- EDITAR: badge do hero -->
+    <div class="hero-badge">Agência de Performance Digital</div>
+
+    <!-- EDITAR: título principal -->
+    <h1>
+      Impulsionamos<br>
+      <span class="highlight">marcas</span> com<br>
+      <span class="stroke">resultados reais.</span>
+    </h1>
+
+    <!-- EDITAR: subtítulo do hero -->
+    <p class="hero-desc">
+      Transformamos seu investimento em marketing digital em resultados concretos. Tráfego pago, automação inteligente e estratégia orientada a dados — tudo sob o mesmo teto.
+    </p>
+
+    <div class="hero-actions">
+      <!-- EDITAR: link e texto do botão principal -->
+      <a href="https://w.app/oinckg?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20serviços!" class="btn-primary" target="_blank">
+        Quero performar meu negócio
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#servicos" class="btn-ghost">Ver serviços</a>
+    </div>
+  </div>
+
+  <!-- EDITAR: estatísticas do hero -->
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-number">47+</span>
+      <span class="stat-label">Clientes ativos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">3×</span>
+      <span class="stat-label">ROI médio</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">98%</span>
+      <span class="stat-label">Satisfação</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE — EDITAR: itens da faixa animada -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Google Ads <span>✦</span></div>
+    <div class="marquee-item">Meta Ads <span>✦</span></div>
+    <div class="marquee-item">TikTok Ads <span>✦</span></div>
+    <div class="marquee-item">Automação <span>✦</span></div>
+    <div class="marquee-item">Tráfego Pago <span>✦</span></div>
+    <div class="marquee-item">Marketing Digital <span>✦</span></div>
+    <div class="marquee-item">Design Criativo <span>✦</span></div>
+    <div class="marquee-item">Estratégia de Conteúdo <span>✦</span></div>
+    <!-- duplicado para loop infinito -->
+    <div class="marquee-item">Google Ads <span>✦</span></div>
+    <div class="marquee-item">Meta Ads <span>✦</span></div>
+    <div class="marquee-item">TikTok Ads <span>✦</span></div>
+    <div class="marquee-item">Automação <span>✦</span></div>
+    <div class="marquee-item">Tráfego Pago <span>✦</span></div>
+    <div class="marquee-item">Marketing Digital <span>✦</span></div>
+    <div class="marquee-item">Design Criativo <span>✦</span></div>
+    <div class="marquee-item">Estratégia de Conteúdo <span>✦</span></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SERVIÇOS
+     ============================================================ -->
+<section id="servicos" class="services">
+  <div class="services-header reveal">
+    <div>
+      <!-- EDITAR: rótulo e título da seção serviços -->
+      <div class="section-label">O que fazemos</div>
+      <h2 class="section-title">Soluções completas<br>para o seu negócio</h2>
+    </div>
+    <p class="section-sub">Cada serviço é pensado para trabalhar em conjunto, criando um ecossistema digital que cresce com o seu negócio.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- EDITAR: Serviço 1 -->
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="24" cy="24" r="20"/>
+        <path d="M24 4v40M4 24h40M8 10l32 28M40 10L8 38"/>
+      </svg>
+      <h3>Gestão de Tráfego Pago</h3>
+      <p>Campanhas otimizadas no Google Ads, Meta Ads e TikTok Ads com foco total em conversão e ROI máximo. Análise contínua e ajustes em tempo real.</p>
+      <div class="service-tags">
+        <span class="tag">Google Ads</span>
+        <span class="tag">Meta Ads</span>
+        <span class="tag">TikTok Ads</span>
+        <span class="tag">Otimização de ROI</span>
+      </div>
+    </div>
+
+    <!-- EDITAR: Serviço 2 -->
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 24l12-12 8 8 16-16"/>
+        <path d="M38 12h-8v8"/>
+        <circle cx="24" cy="38" r="6"/>
+        <path d="M24 32v-8"/>
+      </svg>
+      <h3>Marketing Digital Estratégico</h3>
+      <p>Planejamento e execução de estratégias completas para impulsionar sua presença digital. Desde o diagnóstico até relatórios detalhados semana a semana.</p>
+      <div class="service-tags">
+        <span class="tag">Planejamento estratégico</span>
+        <span class="tag">Análise de mercado</span>
+        <span class="tag">Gestão de campanhas</span>
+        <span class="tag">Relatórios</span>
+      </div>
+    </div>
+
+    <!-- EDITAR: Serviço 3 -->
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="6" y="6" width="16" height="16" rx="2"/>
+        <rect x="26" y="6" width="16" height="16" rx="2"/>
+        <rect x="6" y="26" width="16" height="16" rx="2"/>
+        <path d="M34 26v16M26 34h16"/>
+      </svg>
+      <h3>Automação Inteligente</h3>
+      <p>Automatize processos repetitivos e economize tempo com fluxos de trabalho inteligentes. Integrações personalizadas que escalam o seu negócio.</p>
+      <div class="service-tags">
+        <span class="tag">Automação de processos</span>
+        <span class="tag">Integração de sistemas</span>
+        <span class="tag">Fluxos personalizados</span>
+        <span class="tag">WhatsApp Bot</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     POR QUE A RKV
+     ============================================================ -->
+<section id="sobre">
+  <div class="why-grid">
+    <div class="reveal">
+      <!-- EDITAR: título e lista de diferenciais -->
+      <div class="section-label">Por que a RKV</div>
+      <h2 class="section-title">Diferente em cada detalhe</h2>
+      <p class="section-sub">Somos especialistas em transformar investimento em marketing digital em resultados concretos. Nossa missão é fazer o seu negócio crescer de verdade.</p>
+      <ul class="why-list">
+        <li>Estratégias personalizadas — sem templates genéricos para o seu mercado</li>
+        <li>Relatórios claros e objetivos toda semana, sem enrolação</li>
+        <li>Time dedicado ao seu projeto, não um gestor para 40 contas</li>
+        <li>Foco em resultado real: vendas, leads qualificados e crescimento escalável</li>
+        <li>Suporte ativo via WhatsApp — você nunca fica sem resposta</li>
+      </ul>
+    </div>
+
+    <div class="why-visual reveal">
+      <!-- EDITAR: métricas dos cards visuais -->
+      <div class="why-card-big top">
+        <div class="metric">R$2M+</div>
+        <div class="metric-label">em tráfego gerenciado</div>
+      </div>
+      <div class="why-card-big bottom">
+        <div class="metric">3.8×</div>
+        <div class="metric-label">ROI médio dos clientes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESULTADOS
+     ============================================================ -->
+<section id="resultados" class="results">
+  <div class="reveal">
+    <!-- EDITAR: título da seção resultados -->
+    <div class="section-label">Números reais</div>
+    <h2 class="section-title">Resultados que<br>falam por si</h2>
+  </div>
+
+  <div class="results-grid">
+    <!-- EDITAR: números e descrições dos resultados -->
+    <div class="result-item reveal">
+      <div class="result-num">47+</div>
+      <div class="result-desc">Clientes ativos em diferentes segmentos — do e-commerce ao serviço local</div>
+    </div>
+    <div class="result-item reveal">
+      <div class="result-num">380%</div>
+      <div class="result-desc">Aumento médio de conversão no primeiro trimestre de parceria</div>
+    </div>
+    <div class="result-item reveal">
+      <div class="result-num">R$2M</div>
+      <div class="result-desc">Em investimento publicitário gerenciado com eficiência e transparência</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DEPOIMENTOS
+     ============================================================ -->
+<section>
+  <div class="reveal" style="text-align:center; margin-bottom: 0;">
+    <div class="section-label" style="justify-content:center;">Depoimentos</div>
+    <h2 class="section-title">O que nossos clientes dizem</h2>
+  </div>
+
+  <div class="testimonials-grid">
+    <!-- EDITAR: depoimentos — texto, nome e cargo -->
+    <div class="testimonial reveal">
+      <p>A RKV mudou completamente nossa operação de marketing. Em 60 dias, triplicamos o número de leads qualificados e o custo por aquisição caiu pela metade.</p>
+      <div class="testimonial-author">
+        <div class="avatar">CM</div>
+        <div>
+          <div class="author-name">Carlos Mendes</div>
+          <div class="author-role">CEO — Construtora Mendes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial reveal">
+      <p>Nunca tive tanta clareza sobre onde meu dinheiro estava sendo investido. Os relatórios semanais e o suporte no WhatsApp fazem toda a diferença no dia a dia.</p>
+      <div class="testimonial-author">
+        <div class="avatar">JF</div>
+        <div>
+          <div class="author-name">Juliana Ferreira</div>
+          <div class="author-role">Diretora — Clínica Revive</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial reveal">
+      <p>A automação que implementaram no nosso funil de vendas economizou mais de 20 horas semanais da equipe. Resultado: mais foco em fechar negócio, menos trabalho operacional.</p>
+      <div class="testimonial-author">
+        <div class="avatar">RP</div>
+        <div>
+          <div class="author-name">Ricardo Pinto</div>
+          <div class="author-role">Founder — TechBrasil</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESSO
+     ============================================================ -->
+<section id="processo" class="process">
+  <div class="reveal">
+    <!-- EDITAR: título da seção processo -->
+    <div class="section-label">Como funciona</div>
+    <h2 class="section-title">Do primeiro contato<br>ao crescimento</h2>
+  </div>
+
+  <div class="process-steps">
+    <!-- EDITAR: etapas do processo -->
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3>Diagnóstico</h3>
+      <p>Analisamos seu negócio, mercado, concorrentes e oportunidades. Sem achismo — tudo baseado em dados reais.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <h3>Estratégia</h3>
+      <p>Desenvolvemos um plano personalizado com metas claras, canais definidos e orçamento otimizado para o seu objetivo.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <h3>Execução</h3>
+      <p>Colocamos a máquina para rodar: campanhas, automações, criativos e otimizações contínuas em tempo real.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h3>Escala</h3>
+      <p>Com resultados validados, escalamos o que funciona e eliminamos o que não traz retorno. Crescimento previsível.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BAND
+     ============================================================ -->
+<section class="cta-section">
+  <!-- EDITAR: textos da faixa de CTA -->
+  <div class="section-label reveal">Pronto para crescer?</div>
+  <h2 class="section-title reveal">Vamos transformar seu<br>negócio juntos.</h2>
+  <p class="section-sub reveal">Solicite uma proposta gratuita e descubra o que a RKV pode fazer pela sua empresa. Sem compromisso.</p>
+  <!-- EDITAR: link e texto do botão CTA -->
+  <a href="https://w.app/oinckg?text=Olá!%20Quero%20solicitar%20uma%20proposta%20para%20minha%20empresa." class="btn-dark reveal" target="_blank">
+    Solicitar uma Proposta
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- ============================================================
+     CONTATO
+     ============================================================ -->
+<section id="contato">
+  <div class="reveal">
+    <!-- EDITAR: título da seção contato -->
+    <div class="section-label">Contato</div>
+    <h2 class="section-title">Entre em contato</h2>
+    <p class="section-sub">Estamos em Curitiba, mas atendemos todo o Brasil. Resposta em até 2 horas úteis.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <!-- EDITAR: dados de contato -->
+      <a class="contact-item" href="https://w.app/oinckg" target="_blank">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 014.11 2.18 2 2 0 016 4.11v3a2 2 0 01-1.44 1.92 16 16 0 007.15 7.15A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-item-label">WhatsApp</div>
+          <div class="contact-item-value">(41) 98771-4331</div>
+        </div>
+      </a>
+
+      <a class="contact-item" href="mailto:rvk.agencia@gmail.com">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-item-label">E-mail</div>
+          <!-- EDITAR: e-mail -->
+          <div class="contact-item-value">rvk.agencia@gmail.com</div>
+        </div>
+      </a>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Localização</div>
+          <!-- EDITAR: cidade -->
+          <div class="contact-item-value">Curitiba, PR — Brasil</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO — ao clicar em enviar, abre WhatsApp -->
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome completo">
+        </div>
+        <div class="form-group">
+          <label for="fone">WhatsApp</label>
+          <input type="tel" id="fone" placeholder="(00) 00000-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com">
+      </div>
+      <div class="form-group">
+        <label for="segmento">Segmento do negócio</label>
+        <input type="text" id="segmento" placeholder="Ex: e-commerce, clínica odontológica...">
+      </div>
+      <div class="form-group">
+        <label for="mensagem">Como podemos ajudar?</label>
+        <textarea id="mensagem" placeholder="Conta um pouco sobre seu negócio e o que você precisa..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="enviarFormulario()">
+        Enviar mensagem
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo">RK<span>V</span></a>
+  <!-- EDITAR: texto do rodapé -->
+  <p>© 2025 RKV Agência — Curitiba, PR</p>
+  <div class="footer-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#processo">Processo</a>
+    <a href="#contato">Contato</a>
+    <!-- EDITAR: link WhatsApp footer -->
+    <a href="https://w.app/oinckg" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top  = my + 'px';
+});
+
+(function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animateRing);
+})();
+
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+    ring.style.opacity = '0';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    ring.style.opacity = '1';
+  });
+});
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── NAV SHRINK ON SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── MOBILE MENU ── */
+function openMobile()  { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+/* ── FORMULÁRIO → WHATSAPP ── */
+function enviarFormulario() {
+  const nome      = document.getElementById('nome').value.trim();
+  const fone      = document.getElementById('fone').value.trim();
+  const email     = document.getElementById('email').value.trim();
+  const segmento  = document.getElementById('segmento').value.trim();
+  const mensagem  = document.getElementById('mensagem').value.trim();
+
+  /* EDITAR: número do WhatsApp para receber o formulário */
+  const numero = '5541987714331';
+
+  const texto = encodeURIComponent(
+    `Olá! Vim pelo site da RKV e quero saber mais.\n\n` +
+    `*Nome:* ${nome || '—'}\n` +
+    `*WhatsApp:* ${fone || '—'}\n` +
+    `*E-mail:* ${email || '—'}\n` +
+    `*Segmento:* ${segmento || '—'}\n` +
+    `*Mensagem:* ${mensagem || '—'}`
+  );
+
+  window.open(`https://w.app/oinckg`, '_blank');
+}
+</script>
+</body>
+</html>
